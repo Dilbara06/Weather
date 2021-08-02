@@ -1,5 +1,6 @@
 package kg.tutorialapp.weather_app.network
 
+import io.reactivex.Observable
 import kg.tutorialapp.weather_app.ForeCast
 import retrofit2.Call
 import retrofit2.http.GET
@@ -7,7 +8,7 @@ import retrofit2.http.Query
 
 interface WeatherApi {
     @GET("onecall?lat=42.882004&lon=74.582748&exclude=minutely&appid=9952fce7867352a4421f69f50af97842&lang=ru&units=metric")
-    fun getWeather(): Call<ForeCast>
+    fun getWeather(): Observable<ForeCast>
     @GET("onecall")
     fun fetchWeatherUsingQuerry(
             @Query("lat") lat: Double =42.882004,

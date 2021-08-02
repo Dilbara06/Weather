@@ -3,6 +3,8 @@ package kg.tutorialapp.weather_app
 import kg.tutorialapp.weather_app.network.PostsApi
 import kg.tutorialapp.weather_app.network.WeatherApi
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory.*
 import retrofit2.converter.gson.GsonConverterFactory
 
 object WeatherClient {
@@ -10,8 +12,9 @@ object WeatherClient {
         Retrofit.Builder()
             .baseUrl("https://api.openweathermap.org/data/2.5/")
 //                .baseUrl("https://jsonplaceholder.typicode.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+             .build()
 
     }
 
